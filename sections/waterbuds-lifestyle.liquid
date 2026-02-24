@@ -1,0 +1,94 @@
+{% assign primary_image = section.settings.primary_image %}
+{% assign secondary_image = section.settings.secondary_image %}
+{% if primary_image != blank %}
+  {% assign primary_url = primary_image | image_url: width: 2000 %}
+{% else %}
+  {% assign primary_url = 'swimmers-duo.jpg' | asset_url %}
+{% endif %}
+{% if secondary_image != blank %}
+  {% assign secondary_url = secondary_image | image_url: width: 2000 %}
+{% else %}
+  {% assign secondary_url = 'pool-runner.jpg' | asset_url %}
+{% endif %}
+
+<section class="waterbuds-lifestyle color-{{ section.settings.color_scheme }}">
+  <style>
+    .waterbuds-lifestyle {
+      padding: 64px 0;
+    }
+    .waterbuds-lifestyle__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: grid;
+      gap: 2rem;
+    }
+    .waterbuds-lifestyle__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+    .waterbuds-lifestyle__card {
+      border-radius: 28px;
+      overflow: hidden;
+      position: relative;
+      min-height: 360px;
+      background-size: cover;
+      background-position: center;
+    }
+    .waterbuds-lifestyle__badge {
+      position: absolute;
+      left: 1.25rem;
+      bottom: 1.25rem;
+      padding: 0.6rem 1rem;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.55);
+      color: #fff;
+      font-weight: 600;
+    }
+    .waterbuds-lifestyle__copy {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .waterbuds-lifestyle .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 0.8rem;
+      color: #ffffff;
+      opacity: 0.8;
+    }
+  </style>
+  <div class="waterbuds-lifestyle__inner">
+    <div class="waterbuds-lifestyle__copy">
+      <p class="eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      <h2 class="h1">{{ section.settings.heading | escape }}</h2>
+      <p>{{ section.settings.subheading }}</p>
+    </div>
+    <div class="waterbuds-lifestyle__grid">
+      <div class="waterbuds-lifestyle__card" style="background-image: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.65)), url({{ primary_url }});">
+        <span class="waterbuds-lifestyle__badge">Lane-ready seal</span>
+      </div>
+      <div class="waterbuds-lifestyle__card" style="background-image: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.65)), url({{ secondary_url }});">
+        <span class="waterbuds-lifestyle__badge">Music between heats</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "HydroShell lifestyle",
+  "settings": [
+    {"type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "See them in the water"},
+    {"type": "text", "id": "heading", "label": "Heading", "default": "Made for swimmers, surfers, and rain runners"},
+    {"type": "textarea", "id": "subheading", "label": "Subheading", "default": "Photos pulled from our latest shoot—feel free to swap in your own athlete images."},
+    {"type": "image_picker", "id": "primary_image", "label": "Primary image"},
+    {"type": "image_picker", "id": "secondary_image", "label": "Secondary image"},
+    {"type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1"}
+  ],
+  "presets": [
+    {"name": "HydroShell lifestyle"}
+  ]
+}
+{% endschema %}

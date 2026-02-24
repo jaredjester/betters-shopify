@@ -1,0 +1,138 @@
+{% assign hero_image = section.settings.background_image %}
+{% if hero_image != blank %}
+  {% assign hero_image_url = hero_image | image_url: width: 2400 %}
+{% else %}
+  {% assign hero_image_url = 'hero-swimmer.jpg' | asset_url %}
+{% endif %}
+
+<section class="waterbuds-hero color-{{ section.settings.color_scheme }}">
+  <style>
+    .waterbuds-hero {
+      position: relative;
+      overflow: hidden;
+    }
+    .waterbuds-hero__media {
+      position: relative;
+      min-height: 540px;
+      background-image: linear-gradient(180deg, rgba(1, 11, 31, 0.55), rgba(1, 11, 31, 0.55)), url({{ hero_image_url }});
+      background-size: cover;
+      background-position: center;
+      border-radius: 32px;
+    }
+    .waterbuds-hero__content {
+      padding: 64px 7vw;
+      color: #fff;
+      display: grid;
+      gap: 1.25rem;
+      max-width: 720px;
+    }
+    .waterbuds-hero__eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 0.78rem;
+      color: #8dffef;
+    }
+    .waterbuds-hero__price {
+      font-size: clamp(2.8rem, 4vw, 4rem);
+      font-weight: 600;
+    }
+    .waterbuds-hero__ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+    }
+    .waterbuds-hero__ctas a {
+      padding: 0.9rem 1.6rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .waterbuds-hero__ctas a.primary {
+      background: #00c2c7;
+      color: #03121f;
+    }
+    .waterbuds-hero__ctas a.secondary {
+      border: 1px solid rgba(255,255,255,0.6);
+      color: #fff;
+    }
+    .waterbuds-hero__colors {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .waterbuds-hero__pill {
+      border-radius: 999px;
+      padding: 0.35rem 0.9rem;
+      font-size: 0.85rem;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+    .waterbuds-hero__script {
+      font-size: 0.95rem;
+      opacity: 0.9;
+      max-width: 520px;
+    }
+    @media (max-width: 749px) {
+      .waterbuds-hero__media {
+        border-radius: 18px;
+        min-height: 460px;
+      }
+      .waterbuds-hero__content {
+        padding: 48px 1.5rem;
+      }
+      .waterbuds-hero__ctas {
+        flex-direction: column;
+      }
+      .waterbuds-hero__ctas a {
+        text-align: center;
+        width: 100%;
+      }
+    }
+  </style>
+  <div class="waterbuds-hero__media">
+    <div class="waterbuds-hero__content">
+      <p class="waterbuds-hero__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      <h1 class="h0">{{ section.settings.heading | escape }}</h1>
+      <p class="large-body">{{ section.settings.subheading }}</p>
+      <p class="waterbuds-hero__price">{{ section.settings.price_copy }}</p>
+      <div class="waterbuds-hero__ctas">
+        <a class="primary" href="{{ section.settings.primary_link }}">{{ section.settings.primary_label }}</a>
+        <a class="secondary" href="{{ section.settings.secondary_link }}">{{ section.settings.secondary_label }}</a>
+      </div>
+      <div class="waterbuds-hero__colors">
+        <span>Colors:</span>
+        <span class="waterbuds-hero__pill">Ripcurrent Blue</span>
+        <span class="waterbuds-hero__pill">Ultraviolet Purple</span>
+        <span class="waterbuds-hero__pill">Midnight Black</span>
+      </div>
+      <div class="waterbuds-hero__script">
+        <strong>{{ section.settings.script_heading }}</strong>
+        <p>{{ section.settings.script_text }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "HydroShell hero",
+  "settings": [
+    {"type": "image_picker", "id": "background_image", "label": "Background image"},
+    {"type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "IPX8 waterproof"},
+    {"type": "text", "id": "heading", "label": "Heading", "default": "HydroShell™ SwimBuds"},
+    {"type": "textarea", "id": "subheading", "label": "Subheading", "default": "Waterproof earphones built for laps, storms, and sweaty commutes."},
+    {"type": "text", "id": "price_copy", "label": "Price copy", "default": "$60 / pair"},
+    {"type": "text", "id": "primary_label", "label": "Primary CTA label", "default": "Shop SwimBuds"},
+    {"type": "url", "id": "primary_link", "label": "Primary CTA link", "default": "/products/hydroshell-swimbuds"},
+    {"type": "text", "id": "secondary_label", "label": "Secondary CTA label", "default": "See bundle offer"},
+    {"type": "url", "id": "secondary_link", "label": "Secondary CTA link", "default": "#bundle-offer"},
+    {"type": "text", "id": "script_heading", "label": "Script heading", "default": "Pool deck script"},
+    {"type": "textarea", "id": "script_text", "label": "Script text", "default": "“Give me 60 seconds. Dunk them, shake them, and they still cue your playlist before the next lap.”"},
+    {"type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-4"}
+  ],
+  "presets": [
+    {"name": "HydroShell hero"}
+  ]
+}
+{% endschema %}

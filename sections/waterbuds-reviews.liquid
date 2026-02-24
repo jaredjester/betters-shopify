@@ -1,0 +1,80 @@
+<section class="waterbuds-reviews color-{{ section.settings.color_scheme }}">
+  <style>
+    .waterbuds-reviews {
+      padding: 72px 0 96px;
+    }
+    .waterbuds-reviews__inner {
+      max-width: 1150px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: grid;
+      gap: 2rem;
+    }
+    .waterbuds-reviews .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.78rem;
+      color: #0c748f;
+    }
+    .waterbuds-reviews__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+    .waterbuds-review {
+      background: #ffffff;
+      border: 1px solid rgba(6, 23, 36, 0.08);
+      border-radius: 18px;
+      padding: 1.5rem;
+      box-shadow: 0 20px 40px rgba(9, 23, 45, 0.05);
+    }
+    .waterbuds-review__quote {
+      font-size: 0.97rem;
+      line-height: 1.5;
+      margin: 0 0 0.9rem;
+    }
+    .waterbuds-review__author {
+      font-weight: 600;
+      color: #06273c;
+      font-size: 0.93rem;
+    }
+    .waterbuds-review__meta {
+      font-size: 0.8rem;
+      color: #6a7c8a;
+    }
+  </style>
+  <div class="waterbuds-reviews__inner">
+    <div>
+      <p class="eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      <h2 class="h1">{{ section.settings.heading | escape }}</h2>
+      <p>{{ section.settings.subheading }}</p>
+    </div>
+    <div class="waterbuds-reviews__grid">
+      {% assign reviews = section.settings.reviews_content | split: '||' %}
+      {% for review in reviews %}
+        {% assign parts = review | split: '|*|' %}
+        <article class="waterbuds-review">
+          <p class="waterbuds-review__quote">{{ parts[2] }}</p>
+          <p class="waterbuds-review__author">{{ parts[0] }}</p>
+          <p class="waterbuds-review__meta">{{ parts[1] }}</p>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "HydroShell reviews",
+  "settings": [
+    {"type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Real swimmers"},
+    {"type": "text", "id": "heading", "label": "Heading", "default": "12 people who tried to drown them first"},
+    {"type": "textarea", "id": "subheading", "label": "Subheading", "default": "Most people doubted waterproof audio. Now they log laps with playlists instead of counting tiles."},
+    {"type": "textarea", "id": "reviews_content", "label": "Reviews (name|*|meta|*|quote separated by ||)", "default": "Maya L.|*|Austin Masters Swim|*|\"Honestly expected them to cut out on lap one. Dunked them in my warmup bucket and the beat kept rolling so I clicked buy for my relay team.\"||Andre V.|*|Surfside, FL|*|\"Took them offshore on my paddle board. Got rolled by a wave, came up laughing because the chorus never skipped.\"||Piper G.|*|Triathlete, Bend|*|\"These live in chlorine five mornings a week. First earbuds that don’t loosen on flip turns.\"||Nico R.|*|Brooklyn Lap Club|*|\"Thought the marketing was hype so I swam with a spare pair in case they died. Joke’s on me—I gave the spare away because HydroShell survived.\"||Jules A.|*|Lifeguard, San Diego|*|\"They handle sunscreen, salt, and surprise dives off the tower. Customers ask about them daily.\"||Selene T.|*|Swim mom|*|\"Bought ‘em for my teen who hates boring sets. Now she races me to the pool because she wants her playlist.\"||Marcus C.|*|YMCA Coach|*|\"Team pack deal is clutch. We hand the free floating bag to fastest relay every Friday.\"||Nina W.|*|Open water swimmer|*|\"Day one experiment: leave them submerged during recovery. Zero hiccups and the memory wire means no fidgeting.\"||Tessa P.|*|College sprinter|*|\"I was sure bone-conduction hype wasn’t real. Turns out you can actually feel bass underwater. Wild.\"||Harry B.|*|Lap lane rebel|*|\"No more soggy headphones. Put them through the washer accidentally, still work.\"||Omar D.|*|Swim teacher|*|\"Kids splash me all day so waterproofing had to deliver. It does, and the battery lasts through six lessons.\"||Rina K.|*|Tokyo night swimmer|*|\"Purple set matches my suit and I can finally zen out without counting strokes in my head.\""},
+    {"type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1"}
+  ],
+  "presets": [
+    {"name": "HydroShell reviews"}
+  ]
+}
+{% endschema %}

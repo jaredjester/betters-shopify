@@ -1,0 +1,60 @@
+{
+  "sections": {
+    "hero": {
+      "type": "waterbuds-hero",
+      "settings": {
+        "eyebrow": "IPX8 waterproof",
+        "heading": "HydroShell™ SwimBuds",
+        "subheading": "Waterproof earphones that snap behind your ear, pump playlists through every lap, and survive rinse-and-repeat training days.",
+        "price_copy": "$60 / pair",
+        "primary_label": "Shop SwimBuds",
+        "primary_link": "/products/hydroshell-swimbuds",
+        "secondary_label": "See bundle offer",
+        "secondary_link": "#bundle-offer",
+        "script_heading": "Pool deck script",
+        "script_text": "“You thought waterproof buds were a myth? Dunk these, shake them, press play, and meet me at the flags.”",
+        "color_scheme": "scheme-4"
+      }
+    },
+    "lifestyle": {
+      "type": "waterbuds-lifestyle",
+      "settings": {
+        "eyebrow": "See them in the water",
+        "heading": "Made for swimmers, surfers, and rain runners",
+        "subheading": "Use the included photography (two swimmer shots) or swap them in Shopify’s theme editor for your own team.",
+        "color_scheme": "scheme-1"
+      }
+    },
+    "features": {
+      "type": "waterbuds-features",
+      "settings": {
+        "eyebrow": "Built for open water",
+        "heading": "Swim, sprint, and shower with music",
+        "subheading": "Every component is sealed, balanced, and tuned to stay put when you flip-turn.",
+        "feature_content": "🌊|*|IPX8 hydrophobic shell|*|Nanocoated drivers and dual-seal vents keep water out even 2 meters deep for 30+ minutes.||🔒|*|Memory-wire wing|*|Soft titanium memory wire locks behind your ear so dives, flip turns, and sprints never shake them loose.||🔋|*|8-hour battery underwater|*|Mag-Lock charge case tops you up between heats; 10-minute quick charge = 2 laps of audio.",
+        "color_scheme": "scheme-1"
+      }
+    },
+    "bundles": {
+      "type": "waterbuds-bundles",
+      "settings": {
+        "eyebrow": "Bundle & save",
+        "heading": "Team packs that ship with free swim gifts",
+        "subheading": "Mix colors per pack. Gifts ship automatically so you can open, sync, and dive in.",
+        "bundle_content": "Solo Set|*|$60|*|Includes HydroShell case|*|1 pair + 3 sizes of fins::Ideal for new swimmers::Ships in 24h||Wave Duo|*|$100|*|+ Free waterproof carry pouch|*|2 pairs + 2 magnetic cables::Perfect for you + training partner::Add mix-and-match colors||Squad Trio|*|$120|*|+ Floating dry bag & anti-fog swim cap|*|3 pairs (double price keeps cost per pair at $40)::Free gifts bundled for relays::Coaches love for prize packs",
+        "color_scheme": "scheme-1"
+      }
+    },
+    "reviews": {
+      "type": "waterbuds-reviews",
+      "settings": {
+        "eyebrow": "Real swimmers",
+        "heading": "12 people who tried to drown them first",
+        "subheading": "Most people doubted waterproof audio. Now they log laps with playlists instead of counting tiles.",
+        "reviews_content": "Maya L.|*|Austin Masters Swim|*|\"Honestly expected them to cut out on lap one. Dunked them in my warmup bucket and the beat kept rolling so I clicked buy for my relay team.\"||Andre V.|*|Surfside, FL|*|\"Took them offshore on my paddle board. Got rolled by a wave, came up laughing because the chorus never skipped.\"||Piper G.|*|Triathlete, Bend|*|\"These live in chlorine five mornings a week. First earbuds that don’t loosen on flip turns.\"||Nico R.|*|Brooklyn Lap Club|*|\"Thought the marketing was hype so I swam with a spare pair in case they died. Joke’s on me—I gave the spare away because HydroShell survived.\"||Jules A.|*|Lifeguard, San Diego|*|\"They handle sunscreen, salt, and surprise dives off the tower. Customers ask about them daily.\"||Selene T.|*|Swim mom|*|\"Bought ‘em for my teen who hates boring sets. Now she races me to the pool because she wants her playlist.\"||Marcus C.|*|YMCA Coach|*|\"Team pack deal is clutch. We hand the free floating bag to fastest relay every Friday.\"||Nina W.|*|Open water swimmer|*|\"Day one experiment: leave them submerged during recovery. Zero hiccups and the memory wire means no fidgeting.\"||Tessa P.|*|College sprinter|*|\"I was sure bone-conduction hype wasn’t real. Turns out you can actually feel bass underwater. Wild.\"||Harry B.|*|Lap lane rebel|*|\"No more soggy headphones. Put them through the washer accidentally, still work.\"||Omar D.|*|Swim teacher|*|\"Kids splash me all day so waterproofing had to deliver. It does, and the battery lasts through six lessons.\"||Rina K.|*|Tokyo night swimmer|*|\"Purple set matches my suit and I can finally zen out without counting strokes in my head.\"",
+        "color_scheme": "scheme-1"
+      }
+    }
+  },
+  "order": ["hero", "lifestyle", "features", "bundles", "reviews"]
+}

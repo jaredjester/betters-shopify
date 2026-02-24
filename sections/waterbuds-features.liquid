@@ -1,0 +1,93 @@
+<section class="waterbuds-features color-{{ section.settings.color_scheme }}">
+  <style>
+    .waterbuds-features {
+      padding: 64px 0;
+    }
+    .waterbuds-features__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      text-align: center;
+      display: grid;
+      gap: 2rem;
+    }
+    .waterbuds-features .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 0.8rem;
+      color: #067681;
+      margin-bottom: 0.5rem;
+    }
+    .waterbuds-features__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+    .waterbuds-feature {
+      background: rgba(3, 18, 31, 0.04);
+      border: 1px solid rgba(3, 18, 31, 0.08);
+      border-radius: 20px;
+      padding: 1.75rem;
+      text-align: left;
+    }
+    .waterbuds-feature__icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #e0fbff;
+      color: #007b85;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+    .waterbuds-feature__title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+    .waterbuds-feature__text {
+      margin: 0;
+      color: rgba(3, 18, 31, 0.78);
+    }
+  </style>
+  <div class="waterbuds-features__inner">
+    <div>
+      <p class="eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      <h2 class="h1">{{ section.settings.heading | escape }}</h2>
+      <p>{{ section.settings.subheading }}</p>
+    </div>
+    <div class="waterbuds-features__grid">
+      {% assign cards = section.settings.feature_content | split: '||' %}
+      {% for card in cards %}
+        {% assign parts = card | split: '|*|' %}
+        {% assign icon = parts[0] %}
+        {% assign title = parts[1] %}
+        {% assign body = parts[2] %}
+        <article class="waterbuds-feature">
+          <div class="waterbuds-feature__icon">{{ icon }}</div>
+          <div class="waterbuds-feature__title">{{ title }}</div>
+          <p class="waterbuds-feature__text">{{ body }}</p>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "HydroShell features",
+  "settings": [
+    {"type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Built for open water"},
+    {"type": "text", "id": "heading", "label": "Heading", "default": "Swim, sprint, and shower with music"},
+    {"type": "textarea", "id": "subheading", "label": "Subheading", "default": "Every component is sealed, balanced, and tuned to stay put when you flip-turn."},
+    {"type": "textarea", "id": "feature_content", "label": "Features (icon|*|title|*|body separated by ||)", "default": "🌊|*|IPX8 hydrophobic shell|*|Nanocoated drivers and dual-seal vents keep water out even 2 meters deep for 30+ minutes.||🔒|*|Memory-wire wing|*|Soft titanium memory wire locks behind your ear so dives, flip turns, and sprints never shake them loose.||🔋|*|8-hour battery underwater|*|Mag-Lock charge case tops you up between heats; 10-minute quick charge = 2 laps of audio."},
+    {"type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1"}
+  ],
+  "presets": [
+    {"name": "HydroShell features"}
+  ]
+}
+{% endschema %}

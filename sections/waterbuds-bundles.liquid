@@ -1,0 +1,129 @@
+<section id="bundle-offer" class="waterbuds-bundles color-{{ section.settings.color_scheme }}">
+  <style>
+    .waterbuds-bundles {
+      padding: 72px 0 64px;
+      background: rgba(0, 194, 199, 0.05);
+    }
+    .waterbuds-bundles__inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: grid;
+      gap: 2.5rem;
+      text-align: center;
+    }
+    .waterbuds-bundles .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 0.8rem;
+      color: #00a5aa;
+      margin-bottom: 0.4rem;
+    }
+    .waterbuds-bundles__grid {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .waterbuds-bundle {
+      background: #fff;
+      border-radius: 24px;
+      padding: 1.75rem;
+      border: 1px solid rgba(0,0,0,0.08);
+      box-shadow: 0 20px 50px rgba(18, 62, 92, 0.08);
+    }
+    .waterbuds-bundle--highlight {
+      border: 2px solid #00c2c7;
+      transform: translateY(-6px);
+    }
+    .waterbuds-bundle__title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0.35rem;
+    }
+    .waterbuds-bundle__price {
+      font-size: 2.2rem;
+      font-weight: 600;
+      margin: 0.3rem 0 0.8rem;
+    }
+    .waterbuds-bundle__gift {
+      font-size: 0.95rem;
+      color: #007b85;
+      margin-bottom: 0.8rem;
+    }
+    .waterbuds-bundle ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      color: rgba(3,18,31,0.8);
+    }
+    .waterbuds-bundle li + li {
+      margin-top: 0.35rem;
+    }
+    .waterbuds-colors {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .waterbuds-color-chip {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-weight: 600;
+    }
+    .waterbuds-color-chip span {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+  </style>
+  <div class="waterbuds-bundles__inner">
+    <div>
+      <p class="eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      <h2 class="h1">{{ section.settings.heading | escape }}</h2>
+      <p>{{ section.settings.subheading }}</p>
+    </div>
+    <div class="waterbuds-bundles__grid">
+      {% assign bundles = section.settings.bundle_content | split: '||' %}
+      {% for bundle in bundles %}
+        {% assign parts = bundle | split: '|*|' %}
+        {% assign name = parts[0] %}
+        {% assign price = parts[1] %}
+        {% assign gift = parts[2] %}
+        {% assign bullets = parts[3] | split: '::' %}
+        <article class="waterbuds-bundle {% if forloop.index == 2 %}waterbuds-bundle--highlight{% endif %}">
+          <p class="waterbuds-bundle__title">{{ name }}</p>
+          <p class="waterbuds-bundle__price">{{ price }}</p>
+          <p class="waterbuds-bundle__gift">{{ gift }}</p>
+          <ul>
+            {% for bullet in bullets %}
+              <li>{{ bullet }}</li>
+            {% endfor %}
+          </ul>
+        </article>
+      {% endfor %}
+    </div>
+    <div class="waterbuds-colors">
+      <span class="waterbuds-color-chip"><span style="background:#1c65ff"></span>Ripcurrent Blue</span>
+      <span class="waterbuds-color-chip"><span style="background:#8f4aff"></span>Ultraviolet Purple</span>
+      <span class="waterbuds-color-chip"><span style="background:#050711"></span>Midnight Black</span>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "HydroShell bundles",
+  "settings": [
+    {"type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Bundle & save"},
+    {"type": "text", "id": "heading", "label": "Heading", "default": "Team packs that ship with free swim gifts"},
+    {"type": "textarea", "id": "subheading", "label": "Subheading", "default": "Mix colors per pack. Gifts ship automatically so you can open, sync, and dive in."},
+    {"type": "textarea", "id": "bundle_content", "label": "Bundles (name|*|price|*|gift|*|bullet::bullet separated by ||)", "default": "Solo Set|*|$60|*|Includes HydroShell case|*|1 pair + 3 sizes of fins::Ideal for new swimmers::Ships in 24h||Wave Duo|*|$100|*|+ Free waterproof carry pouch|*|2 pairs + 2 magnetic cables::Perfect for you + training partner::Add mix-and-match colors||Squad Trio|*|$120|*|+ Floating dry bag & anti-fog swim cap|*|3 pairs (double price keeps cost per pair at $40)::Free gifts bundled for relays::Coaches love for prize packs"},
+    {"type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1"}
+  ],
+  "presets": [
+    {"name": "HydroShell bundles"}
+  ]
+}
+{% endschema %}
