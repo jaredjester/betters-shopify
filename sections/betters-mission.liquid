@@ -83,6 +83,45 @@
     height: 500px;
   }
 
+  .betters-mission__hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 24px;
+    position: absolute;
+    inset: 0;
+  }
+
+  .betters-mission__img-wrap {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    height: 500px;
+    box-shadow: 0 24px 60px rgba(30,61,47,0.2);
+  }
+
+  .betters-mission__img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(30,61,47,0.6) 0%, transparent 60%);
+    border-radius: 24px;
+    z-index: 1;
+  }
+
+  .betters-mission__img-badge {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    z-index: 2;
+    background: rgba(196,136,46,0.9);
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    backdrop-filter: blur(8px);
+  }
+
   .betters-mission__card {
     position: absolute;
     border-radius: 24px;
@@ -182,16 +221,13 @@
     </div>
 
     <div class="betters-mission__visual">
-      <div class="betters-mission__card-stack">
-        {% assign cards = section.blocks | where: 'type', 'value_card' %}
-        {% assign card_classes = 'betters-mission__card--1,betters-mission__card--2,betters-mission__card--3' | split: ',' %}
-        {% for block in cards %}
-          <div class="betters-mission__card {{ card_classes[forloop.index0] }}" {{ block.shopify_attributes }}>
-            <span class="betters-mission__card-emoji">{{ block.settings.emoji }}</span>
-            <h4 class="betters-mission__card-title">{{ block.settings.title }}</h4>
-            <p class="betters-mission__card-text">{{ block.settings.text }}</p>
-          </div>
-        {% endfor %}
+      <div class="betters-mission__img-wrap">
+        <img class="betters-mission__hero-img"
+          src="{{ 'betters-mission-botanicals.jpg' | asset_url }}"
+          alt="Betters botanical herbs"
+          loading="lazy">
+        <div class="betters-mission__img-overlay"></div>
+        <div class="betters-mission__img-badge">🌿 Small-batch · Austin, TX · Est. 2022</div>
       </div>
     </div>
   </div>

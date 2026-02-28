@@ -37,11 +37,17 @@
   }
 
   .betters-ritual__bottle-placeholder {
-    font-size: 120px;
-    filter: drop-shadow(0 20px 40px rgba(30,61,47,0.15));
-    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    inset: 0;
     z-index: 1;
-    animation: betters-float 4s ease-in-out infinite;
+    transition: transform 0.6s ease;
+  }
+
+  .betters-ritual__bottle-wrap:hover .betters-ritual__bottle-placeholder {
+    transform: scale(1.04);
   }
 
   @keyframes betters-float {
@@ -152,7 +158,7 @@
     <div class="betters-ritual__visual">
       <div class="betters-ritual__bottle-wrap">
         <div class="betters-ritual__bottle-bg"></div>
-        <div class="betters-ritual__bottle-placeholder">🫙</div>
+        <img class="betters-ritual__bottle-placeholder" src="{{ 'betters-ritual-drops.jpg' | asset_url }}" alt="Adding Betters drops to a drink" loading="lazy">
         <div class="betters-ritual__badge">
           Small<br>Batch<br>Crafted
         </div>

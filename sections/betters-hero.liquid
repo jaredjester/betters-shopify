@@ -34,13 +34,15 @@
   .betters-hero__botanical-left {
     left: 0;
     background-position: left center;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 600'%3E%3Cpath d='M100 600 Q40 400 80 200 Q120 100 60 0' stroke='%231E3D2F' stroke-width='3' fill='none'/%3E%3Cellipse cx='60' cy='150' rx='40' ry='60' fill='%231E3D2F' opacity='0.6' transform='rotate(-30 60 150)'/%3E%3Cellipse cx='80' cy='280' rx='50' ry='70' fill='%231E3D2F' opacity='0.5' transform='rotate(20 80 280)'/%3E%3Cellipse cx='50' cy='400' rx='35' ry='55' fill='%231E3D2F' opacity='0.6' transform='rotate(-15 50 400)'/%3E%3C/svg%3E");
+    background-size: cover;
+    opacity: 0.18;
   }
 
   .betters-hero__botanical-right {
     right: 0;
     background-position: right center;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 600'%3E%3Cpath d='M100 600 Q160 400 120 200 Q80 100 140 0' stroke='%231E3D2F' stroke-width='3' fill='none'/%3E%3Cellipse cx='140' cy='150' rx='40' ry='60' fill='%231E3D2F' opacity='0.6' transform='rotate(30 140 150)'/%3E%3Cellipse cx='120' cy='280' rx='50' ry='70' fill='%231E3D2F' opacity='0.5' transform='rotate(-20 120 280)'/%3E%3Cellipse cx='150' cy='400' rx='35' ry='55' fill='%231E3D2F' opacity='0.6' transform='rotate(15 150 400)'/%3E%3C/svg%3E");
+    background-size: cover;
+    opacity: 0.18;
   }
 
   .betters-hero__inner {
@@ -199,8 +201,8 @@
 
 <section class="betters-hero" id="betters-hero">
   <div class="betters-hero__bg-pattern"></div>
-  <div class="betters-hero__botanical-left"></div>
-  <div class="betters-hero__botanical-right"></div>
+  <div class="betters-hero__botanical-left" style="background-image: url({{ 'betters-bg-herbs.jpg' | asset_url }});"></div>
+  <div class="betters-hero__botanical-right" style="background-image: url({{ 'betters-bg-herbs.jpg' | asset_url }}); transform: scaleX(-1);"></div>
 
   <div class="betters-hero__inner">
     <span class="betters-hero__eyebrow">{{ section.settings.eyebrow }}</span>

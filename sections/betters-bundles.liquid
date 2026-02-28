@@ -68,11 +68,30 @@
     overflow: hidden;
   }
 
+  .betters-bundle-card__image img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .betters-bundle-card:hover .betters-bundle-card__image img {
+    transform: scale(1.05);
+  }
+
   .betters-bundle-card__image::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at center bottom, rgba(196,136,46,0.1) 0%, transparent 70%);
+    background: radial-gradient(ellipse at center bottom, rgba(196,136,46,0.15) 0%, transparent 70%);
+    z-index: 1;
+  }
+
+  .betters-bundle-card__image-emoji {
+    position: relative;
+    z-index: 2;
   }
 
   .betters-bundle-card__body {
@@ -228,7 +247,9 @@
           {% endif %}
 
           <div class="betters-bundle-card__image">
-            {{ block.settings.emoji }}
+            {% assign bundle_imgs = 'betters-hero-bottle.jpg,betters-lifestyle-drink.jpg,betters-mission-botanicals.jpg' | split: ',' %}
+            <img src="{{ bundle_imgs[forloop.index0] | asset_url }}" alt="{{ block.settings.name }}" loading="lazy">
+            <span class="betters-bundle-card__image-emoji" style="font-size:48px;position:relative;z-index:2;filter:drop-shadow(0 4px 12px rgba(0,0,0,0.3));">{{ block.settings.emoji }}</span>
           </div>
 
           <div class="betters-bundle-card__body">
